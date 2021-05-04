@@ -75,7 +75,7 @@ class ProfileBodySection extends StatelessWidget {
           color: Colors.blueGrey,
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(22.0),
           child: Column(
             children: [
               Row(
