@@ -1,53 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
+import 'middle_state.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'data/fake_data.dart';
+import 'model/profile.dart';
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+        ),
       ),
-      home: Scaffold(appBar: AppBar(title: Text('Counter')), body: Counter()),
+      home: MyHomePage(),
     );
   }
 }
 
-class Counter extends StatefulWidget {
-  @override
-  _CounterState createState() => _CounterState();
-}
-
-class _CounterState extends State<Counter> {
-  final counterSubject = BehaviorSubject<int>();
-
-  int counter = 0;
+class MyHomePage extends StatelessWidget {
+  final Profile profile = fakeProfile;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+        title: Text(
+          '프로필',
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: false,
+        titleSpacing: 0.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_alert),
+            onPressed: null,
+          ),
+        ],
+      ),
+      body: Column(
         children: [
-          ElevatedButton(onPressed: () {
-              counterSubject.add(++counter);
-          }, child: Text('add')),
-          StreamBuilder<int>(
-            stream: counterSubject.stream,
-            initialData: 0,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-              return Text(
-                '${snapshot.data}',
-                style: TextStyle(fontSize: 30),);
-              }
-            }
-          )
+          ProfileTopSection(profile),
         ],
       ),
     );
