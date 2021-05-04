@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import 'model/profile.dart';
+import '../model/profile.dart';
 
 class ProfileTopSection extends StatefulWidget {
   final Profile profile;

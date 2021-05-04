@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'middle_state.dart';
+import 'package:flutter_middle_2/ui_profile/profile_body_section.dart';
+import 'package:flutter_middle_2/ui_profile/profile_head_section.dart';
+import 'ui_profile/middle_state.dart';
 
 import 'data/fake_data.dart';
 import 'model/profile.dart';
@@ -52,22 +54,66 @@ class MyHomePage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                ProfileTopSection(profile)
+                ProfileTopSection(profile),
+                ProfileHeadSection(profile),
+                Divider(
+                  color: Colors.blueGrey,
+                ),
+                ProfileBodySection(profile),
               ],
             ),
           ),
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('별로에요')
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )
+                        )
+                    ),
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text('별로에요',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20
+                        ),
+                        ),
+                      ),
+                  ),
                 ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('괜찮아요')
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xff34b3be)),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                      ),
+                      tapTargetSize: MaterialTapTargetSize.padded
+                    ),
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text('괜찮아요',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                          ),
+                        ),
+                      ),
+                  ),
                 ),
               ),
             ],
